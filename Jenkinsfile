@@ -8,7 +8,7 @@ timeout(time: 60, unit: 'SECONDS') {
             pipelineTriggers([pollSCM('H/1 * * * 1-5')])
         ])
         
-        def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
+        def GRADLE_HOME = tool name: 'gradle-5.0', type: 'hudson.plugins.gradle.GradleInstallation'
         sh "${GRADLE_HOME}/bin/gradle tasks"
 
         stage('Clone') {
