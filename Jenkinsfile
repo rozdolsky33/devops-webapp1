@@ -2,8 +2,6 @@
 //comment1
 timeout(time: 60, unit: 'SECONDS') {
     node('master') {
-        def RELEASENAME = "webapp.war"
-
         properties([
             pipelineTriggers([pollSCM('H/1 * * * 1-5')])
         ])
@@ -16,11 +14,11 @@ timeout(time: 60, unit: 'SECONDS') {
         }
 
         stage('Build') {
-            sh "${GRADLE_HOME}/bin/gradle build -PwarName=${RELEASENAME} --info"
+            sh "${GRADLE_HOME}/bin/gradle build --info"
         }
 
         stage('Archive') {
-            archiveArtifacts "build/libs/${RELEASENAME}"
+            archiveArtifacts "build/libs/*.war"
         }    
     }
 }
