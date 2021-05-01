@@ -1,7 +1,7 @@
 //START-OF-SCRIPT
 //comment1
 timeout(time: 60, unit: 'SECONDS') {
-    node('master') {
+    node('agent1') {
         properties([
             pipelineTriggers([pollSCM('H/1 * * * 1-5')])
         ])
